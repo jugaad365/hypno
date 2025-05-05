@@ -67,69 +67,96 @@
   </p>
 </div>`;
 
-      arr[1] = `<div style={{ 
-  fontFamily: "Arial, sans-serif", 
-  maxWidth: "400px", 
-  margin: "50px auto", 
-  padding: "20px", 
-  border: "1px solid #ccc", 
-  borderRadius: "8px", 
-  boxShadow: "0 4px 8px rgba(0,0,0,0.1)" 
-}}>
-  {count === 0 && (
+    arr[1] = `import React, { useState } from "react";
+
+const App = () => {
+  const [count, setCount] = useState(0); // <-- Added useState
+
+  return (
     <>
-      <h2 style={{ textAlign: "center" }}>Register</h2>
-      <input 
-        type="text" 
-        placeholder="Username" 
-        style={{ width: "100%", padding: "10px", marginBottom: "10px" }} 
-      />
-      <input 
-        type="password" 
-        placeholder="Password" 
-        style={{ width: "100%", padding: "10px", marginBottom: "10px" }} 
-      />
-      <button 
-        style={{ width: "100%", padding: "10px", backgroundColor: "#007bff", color: "#fff", border: "none", cursor: "pointer" }} 
-        onClick={() => setCount(1)}
+      <div
+        style={{
+          fontFamily: "Arial, sans-serif",
+          maxWidth: "400px",
+          margin: "50px auto",
+          padding: "20px",
+          border: "1px solid #ccc",
+          borderRadius: "8px",
+          boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+        }}
       >
-        Register
-      </button>
-    </>
-  )}
+        {count === 0 && (
+          <>
+            <h2 style={{ textAlign: "center" }}>Register</h2>
+            <input
+              type="text"
+              placeholder="Username"
+              style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+            />
+            <button
+              style={{
+                width: "100%",
+                padding: "10px",
+                backgroundColor: "#007bff",
+                color: "#fff",
+                border: "none",
+                cursor: "pointer",
+              }}
+              onClick={() => setCount(1)}
+            >
+              Register
+            </button>
+          </>
+        )}
 
-  {count === 1 && (
-    <>
-      <h2 style={{ textAlign: "center" }}>Login</h2>
-      <input 
-        type="text" 
-        placeholder="Username" 
-        style={{ width: "100%", padding: "10px", marginBottom: "10px" }} 
-      />
-      <input 
-        type="password" 
-        placeholder="Password" 
-        style={{ width: "100%", padding: "10px", marginBottom: "10px" }} 
-      />
-      <button 
-        style={{ width: "100%", padding: "10px", backgroundColor: "#28a745", color: "#fff", border: "none", cursor: "pointer" }} 
-        onClick={() => setCount(2)}
-      >
-        Login
-      </button>
-    </>
-  )}
+        {count === 1 && (
+          <>
+            <h2 style={{ textAlign: "center" }}>Login</h2>
+            <input
+              type="text"
+              placeholder="Username"
+              style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+            />
+            <button
+              style={{
+                width: "100%",
+                padding: "10px",
+                backgroundColor: "#28a745",
+                color: "#fff",
+                border: "none",
+                cursor: "pointer",
+              }}
+              onClick={() => setCount(2)}
+            >
+              Login
+            </button>
+          </>
+        )}
 
-  {count === 2 && (
-    <>
-      <h2 style={{ textAlign: "center" }}>Dashboard</h2>
-      <p style={{ textAlign: "center", color: "#555" }}>
-        Welcome to your dashboard!
-      </p>
+        {count === 2 && (
+          <>
+            <h2 style={{ textAlign: "center" }}>Dashboard</h2>
+            <p style={{ textAlign: "center", color: "#555" }}>
+              Welcome to your dashboard!
+            </p>
+          </>
+        )}
+      </div>
     </>
-  )}
-</div>`;
+  );
+};
 
+export default App;`;
       arr[2] = `import React, { useState } from "react";
 import "./App.css";
 
