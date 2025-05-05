@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Champaklal Gada</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f9f9f9;
+      }
+      #buttons-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        max-width: 600px;
+      }
+      button {
+        padding: 12px 24px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        background-color: #4caf50;
+        color: white;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="buttons-container"></div>
+
+    <script>
+      const arr = [];
+      arr[0] = `<div style={{ 
+  fontFamily: "Arial, sans-serif", 
+  maxWidth: "600px", 
+  margin: "50px auto", 
+  padding: "20px", 
+  border: "1px solid #ccc", 
+  borderRadius: "8px", 
+  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" 
+}}>
+  <h1 style={{ textAlign: "center", color: "#333" }}>About Me</h1>
+  <img 
+    src="https://via.placeholder.com/150" 
+    alt="Profile" 
+    style={{ 
+      display: "block", 
+      margin: "20px auto", 
+      borderRadius: "50%" 
+    }} 
+  />
+  <p style={{ fontSize: "16px", lineHeight: "1.6", color: "#555" }}>
+    Hi! I'm Jane Doe, a passionate web developer with a love for building
+    beautiful and functional web applications. I enjoy working with
+    JavaScript, React, and other modern web technologies. In my free time, I
+    love reading, hiking, and experimenting with new coding projects.
+  </p>
+</div>`;
+
+      arr[1] = `<div style={{ 
+  fontFamily: "Arial, sans-serif", 
+  maxWidth: "400px", 
+  margin: "50px auto", 
+  padding: "20px", 
+  border: "1px solid #ccc", 
+  borderRadius: "8px", 
+  boxShadow: "0 4px 8px rgba(0,0,0,0.1)" 
+}}>
+  {count === 0 && (
+    <>
+      <h2 style={{ textAlign: "center" }}>Register</h2>
+      <input 
+        type="text" 
+        placeholder="Username" 
+        style={{ width: "100%", padding: "10px", marginBottom: "10px" }} 
+      />
+      <input 
+        type="password" 
+        placeholder="Password" 
+        style={{ width: "100%", padding: "10px", marginBottom: "10px" }} 
+      />
+      <button 
+        style={{ width: "100%", padding: "10px", backgroundColor: "#007bff", color: "#fff", border: "none", cursor: "pointer" }} 
+        onClick={() => setCount(1)}
+      >
+        Register
+      </button>
+    </>
+  )}
+
+  {count === 1 && (
+    <>
+      <h2 style={{ textAlign: "center" }}>Login</h2>
+      <input 
+        type="text" 
+        placeholder="Username" 
+        style={{ width: "100%", padding: "10px", marginBottom: "10px" }} 
+      />
+      <input 
+        type="password" 
+        placeholder="Password" 
+        style={{ width: "100%", padding: "10px", marginBottom: "10px" }} 
+      />
+      <button 
+        style={{ width: "100%", padding: "10px", backgroundColor: "#28a745", color: "#fff", border: "none", cursor: "pointer" }} 
+        onClick={() => setCount(2)}
+      >
+        Login
+      </button>
+    </>
+  )}
+
+  {count === 2 && (
+    <>
+      <h2 style={{ textAlign: "center" }}>Dashboard</h2>
+      <p style={{ textAlign: "center", color: "#555" }}>
+        Welcome to your dashboard!
+      </p>
+    </>
+  )}
+</div>`;
+
+      arr[2] = `import React, { useState } from "react";
+import "./App.css";
+
+// Functional Component
+function FunctionalGreeting({ name }) {
+  return <p>Hello from Functional Component, {name}!</p>;
+}
+
+// Class Component
+class ClassGreeting extends React.Component {
+  render() {
+    return <p>Hello from Class Component, {this.props.name}!</p>;
+  }
+}
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <>
+      <h2 style={{ textAlign: "center", marginTop: "20px" }}>Component Demo</h2>
+      
+      {/* Functional Component Block */}
+      <div style={{ 
+        margin: "20px auto", 
+        padding: "15px", 
+        border: "1px solid #ccc", 
+        maxWidth: "400px", 
+        borderRadius: "6px",
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+      }}>
+        <h3>Functional Component</h3>
+        <FunctionalGreeting name="Alice" />
+      </div>
+
+      {/* Class Component Block */}
+      <div style={{ 
+        margin: "20px auto", 
+        padding: "15px", 
+        border: "1px solid #ccc", 
+        maxWidth: "400px", 
+        borderRadius: "6px",
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+      }}>
+        <h3>Class Component</h3>
+        <ClassGreeting name="Bob" />
+      </div>
+    </>
+  );
+}
+
+export default App;
+`;
+
+      arr[3] = `import React from "react";
+import "./App.css";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+      mounted: false
+    };
+  }
+
+  componentDidMount() {
+    console.log("Component mounted.");
+    this.setState({ mounted: true });
+  }
+
+  increment = () => {
+    this.setState(prev => ({ count: prev.count + 1 }));
+  };
+
+  render() {
+    return (
+      <div style={{
+        fontFamily: "Arial, sans-serif",
+        maxWidth: "400px",
+        margin: "50px auto",
+        padding: "20px",
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+        textAlign: "center",
+        boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
+      }}>
+        <h2>Counter with State & Lifecycle</h2>
+        <p>Component mounted: {this.state.mounted ? "Yes" : "No"}</p>
+        <p>Count: {this.state.count}</p>
+        <button 
+          onClick={this.increment} 
+          style={{
+            padding: "10px 20px",
+            fontSize: "16px",
+            backgroundColor: "#007bff",
+            color: "#fff",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer"
+          }}
+        >
+          Increment
+        </button>
+      </div>
+    );
+  }
+}
+
+export default App;`;
+
+      arr[4] = `import React, { useState } from "react";
+import "./App.css";
+
+function App() {
+  const [clickCount, setClickCount] = useState(0);
+  const [hovered, setHovered] = useState(false);
+
+  const handleClick = () => {
+    setClickCount(prev => prev + 1);
+  };
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+  };
+
+  return (
+    <div style={{
+      fontFamily: "Arial, sans-serif",
+      maxWidth: "400px",
+      margin: "50px auto",
+      padding: "20px",
+      border: "1px solid #ccc",
+      borderRadius: "8px",
+      textAlign: "center",
+      boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
+    }}>
+      <h2>Event Handling Demo</h2>
+
+      {/* Click Event */}
+      <button
+        onClick={handleClick}
+        style={{
+          padding: "10px 20px",
+          backgroundColor: "#28a745",
+          color: "#fff",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer",
+          marginBottom: "20px"
+        }}
+      >
+        Click Me
+      </button>
+      <p>Button clicked {clickCount} times.</p>
+
+      {/* Hover Event */}
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          marginTop: "30px",
+          padding: "30px",
+          backgroundColor: hovered ? "#007bff" : "#f0f0f0",
+          color: hovered ? "#fff" : "#000",
+          borderRadius: "6px",
+          transition: "0.3s ease"
+        }}
+      >
+        {hovered ? "You're hovering over me!" : "Hover over this box"}
+      </div>
+    </div>
+  );
+}
+
+export default App;`;
+
+      arr[5] = `import React, { useState } from "react";
+import "./App.css";
+
+function App() {
+  const [num, setNum] = useState("");
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    // Allow only numbers
+    if (!isNaN(value)) {
+      setNum(value);
+    }
+  };
+
+  const isEven = (n) => n % 2 === 0;
+
+  return (
+    <div style={{
+      fontFamily: "Arial, sans-serif",
+      maxWidth: "400px",
+      margin: "50px auto",
+      padding: "20px",
+      border: "1px solid #ccc",
+      borderRadius: "8px",
+      boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
+    }}>
+      <h2>Conditional Rendering Demo</h2>
+
+      <input
+        type="text"
+        placeholder="Enter a number"
+        value={num}
+        onChange={handleChange}
+        style={{
+          padding: "10px",
+          width: "100%",
+          marginBottom: "20px",
+          border: "1px solid #ccc",
+          borderRadius: "4px"
+        }}
+      />
+
+      {num !== "" && (
+        isEven(Number(num)) ? (
+          <div style={{
+            padding: "20px",
+            backgroundColor: "#d4edda",
+            color: "#155724",
+            borderRadius: "5px"
+          }}>
+            This is an <strong>even</strong> number.
+          </div>
+        ) : (
+          <div style={{
+            padding: "20px",
+            backgroundColor: "#f8d7da",
+            color: "#721c24",
+            borderRadius: "5px"
+          }}>
+            This is an <strong>odd</strong> number.
+          </div>
+        )
+      )}
+    </div>
+  );
+}
+
+export default App;`;
+
+      arr[6] = `import React, { useState } from "react";
+import "./App.css";
+
+function App() {
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
+  const [feedback, setFeedback] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = () => {
+    if (rating > 0 && feedback.trim() !== "") {
+      setSubmitted(true);
+    } else {
+      alert("Please provide a rating and feedback before submitting.");
+    }
+  };
+
+  return (
+    <div style={{
+      fontFamily: "Arial, sans-serif",
+      maxWidth: "500px",
+      margin: "50px auto",
+      padding: "20px",
+      border: "1px solid #ccc",
+      borderRadius: "8px",
+      boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
+    }}>
+      <h2 style={{ textAlign: "center" }}>Feedback Form</h2>
+
+      {!submitted ? (
+        <>
+          <label style={{ display: "block", marginBottom: "10px" }}>
+            Rate your experience:
+          </label>
+          <div style={{ marginBottom: "20px" }}>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span
+                key={star}
+                onClick={() => setRating(star)}
+                onMouseEnter={() => setHover(star)}
+                onMouseLeave={() => setHover(0)}
+                style={{
+                  fontSize: "30px",
+                  color: (hover || rating) >= star ? "#ffc107" : "#ccc",
+                  cursor: "pointer"
+                }}
+              >
+                ★
+              </span>
+            ))}
+          </div>
+
+          <textarea
+            placeholder="Leave your feedback here..."
+            value={feedback}
+            onChange={(e) => setFeedback(e.target.value)}
+            rows="4"
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              resize: "none",
+              marginBottom: "20px"
+            }}
+          />
+
+          <button
+            onClick={handleSubmit}
+            style={{
+              width: "100%",
+              padding: "10px",
+              backgroundColor: "#007bff",
+              color: "#fff",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer"
+            }}
+          >
+            Submit Feedback
+          </button>
+        </>
+      ) : (
+        <div style={{ textAlign: "center", color: "#28a745" }}>
+          <h3>Thank you for your feedback!</h3>
+          <p>You rated us {rating} out of 5 stars.</p>
+          <p style={{ fontStyle: "italic" }}>"{feedback}"</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;`;
+
+      arr[7] = `import React, { useState } from "react";
+import "./App.css";
+
+// Card component
+function ProductCard({ product }) {
+  const { name, description, price, imgUrl } = product;
+  
+  const [cartCount, setCartCount] = useState(0);
+
+  const handleAddToCart = () => {
+    setCartCount(cartCount + 1);
+    alert(\`$ {name} has been added to your cart!\`);
+  };
+
+  const handleBuyNow = () => {
+    alert(\`You are buying $ {name} for $$ {price}\`);
+  };
+
+  return (
+    <div style={{
+      width: "300px",
+      border: "1px solid #ddd",
+      borderRadius: "8px",
+      padding: "20px",
+      margin: "10px",
+      textAlign: "center",
+      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
+    }}>
+      <img
+        src={imgUrl}
+        alt={name}
+        style={{
+          width: "100%",
+          height: "200px",
+          objectFit: "cover",
+          borderRadius: "8px"
+        }}
+      />
+      <h3 style={{ marginTop: "15px" }}>{name}</h3>
+      <p style={{ color: "#777", fontSize: "14px" }}>{description}</p>
+      <p style={{ fontSize: "18px", fontWeight: "bold" }}>$ {price}</p>
+      
+      {/* Buttons */}
+      <button
+        onClick={handleAddToCart}
+        style={{
+          padding: "10px 20px",
+          backgroundColor: "#28a745",
+          color: "#fff",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer",
+          marginRight: "10px"
+        }}
+      >
+        Add to Cart ({cartCount})
+      </button>
+
+      <button
+        onClick={handleBuyNow}
+        style={{
+          padding: "10px 20px",
+          backgroundColor: "#007bff",
+          color: "#fff",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer"
+        }}
+      >
+        Buy Now
+      </button>
+    </div>
+  );
+}
+
+// Main App Component
+function App() {
+  const product = {
+    name: "Wireless Headphones",
+    description: "High-quality Bluetooth headphones with noise cancellation.",
+    price: 149.99,
+    imgUrl: "https://via.placeholder.com/300x200?text=Headphones"
+  };
+
+  return (
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      flexWrap: "wrap",
+      padding: "30px"
+    }}>
+      <ProductCard product={product} />
+    </div>
+  );
+}
+
+export default App;
+// Remove spaces after $ symbol`;
+
+      const headings = [
+        "Webpage using JSX",
+        "Login, Register, Dashboard",
+        "Functional and Class Components",
+        "State and Lifecycle",
+        "Event Handling",
+        "Conditional Rendering",
+        "Feedback Form",
+        "Product Card",
+      ];
+
+      function copyText(index) {
+        if (index >= 0 && index < arr.length) {
+          navigator.clipboard
+            .writeText(arr[index])
+            .then(() => {
+              document.body.style.backgroundColor = "lightgreen";
+              setTimeout(() => {
+                document.body.style.backgroundColor = "";
+              }, 1000);
+            })
+            .catch((err) => {
+              console.error("Failed to copy:", err);
+            });
+        } else {
+          console.error("Invalid index:", index);
+        }
+      }
+
+      const container = document.getElementById("buttons-container");
+      for (let i = 0; i < 8; i++) {
+        const btn = document.createElement("button");
+        btn.innerText = headings[i];
+        btn.onclick = () => copyText(i);
+        container.appendChild(btn);
+      }
+    </script>
+  </body>
+</html>
